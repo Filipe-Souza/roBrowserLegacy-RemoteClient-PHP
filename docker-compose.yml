@@ -2,11 +2,13 @@ services:
   robrowser-remote-client-api:
     env_file:
       - .env
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ro-remote-client-php:latest
     volumes:
       - ./:/var/www/html
+      - ./resources:/var/www/html/resources
+      - ./data:/var/www/html/data
+      - ./System:/var/www/html/System
+      - ./BGM/var/www/html/BGM
     ports:
       - "80:80"
 

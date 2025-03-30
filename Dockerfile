@@ -13,3 +13,10 @@ RUN apt-get update -y -qq && \
 EXPOSE 80
 
 USER www-data
+
+FROM server AS release
+
+COPY . /var/www/html
+
+EXPOSE 80
+
