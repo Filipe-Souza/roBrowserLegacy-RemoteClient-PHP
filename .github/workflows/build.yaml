@@ -43,9 +43,9 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{github.event.inputs.version }}
+          tags: ghcr.io/filipe-souza/robrowserlegacy-remoteclient-php:${{github.event.inputs.version }}
           target: server
-          context: server
+          context: .
 
   sign_image:
     name: "Sign the image"
@@ -65,7 +65,7 @@ jobs:
 
       - name: Sign image with a key
         run: |
-          cosign sign --yes --key env://COSIGN_PRIVATE_KEY  ghcr.io/${{ github.repository }}:${{github.event.inputs.version }}
+          cosign sign --yes --key env://COSIGN_PRIVATE_KEY  ghcr.io/filipe-souza/robrowserlegacy-remoteclient-php:${{github.event.inputs.version }}
         env:
           COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
