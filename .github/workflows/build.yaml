@@ -44,7 +44,7 @@ jobs:
         with:
           push: true
           tags: ghcr.io/filipe-souza/robrowserlegacy-remoteclient-php:${{github.event.inputs.version }}
-          target: server
+          target: release
           context: .
 
   sign_image:
